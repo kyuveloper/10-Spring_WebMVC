@@ -16,12 +16,39 @@ public class MenuService {
         this.menuDAO = menuDAO;
     }
 
-    public List<MenuDTO> selectAllMenu() {
+    public List<MenuDTO> selectAllMenu() throws NullPointerException {
         List<MenuDTO> menus = menuDAO.selectAllMenu();
 
-        if (Objects.isNull(menus)) { // menuDAO에서 작업 이후의 에러
-            System.out.println("exception menus가 없음");
-        }
         return menus;
+    }
+
+    public int insertMenu(MenuDTO menuDTO) {
+        int result = menuDAO.insertMenu(menuDTO);
+        if(result <= 0){
+            System.out.println("다시 시도");
+        }else{
+            System.out.println("성공");
+        }
+        return result;
+    }
+
+    public int deleteMenu(int code, String name) {
+        int result = menuDAO.deleteMenu(code, name);
+        if(result <= 0){
+            System.out.println("다시 시도");
+        }else{
+            System.out.println("성공");
+        }
+        return result;
+    }
+
+    public int editMenu(MenuDTO menuDTO) {
+        int result = menuDAO.editMenu(menuDTO);
+        if(result <= 0){
+            System.out.println("다시 시도");
+        }else{
+            System.out.println("성공");
+        }
+        return result;
     }
 }

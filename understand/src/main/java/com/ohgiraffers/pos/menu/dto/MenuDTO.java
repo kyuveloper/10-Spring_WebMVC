@@ -7,11 +7,11 @@ public class MenuDTO {
     private int categoryCode;
     private String status;
 
+
     public MenuDTO() {
     }
 
-    public MenuDTO(int code, String name, int price, int categoryCode, String status) {
-        this.code = code;
+    public MenuDTO(String name, int price, int categoryCode, String status) {
         this.name = name;
         this.price = price;
         this.categoryCode = categoryCode;

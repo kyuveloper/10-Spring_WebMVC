@@ -4,6 +4,7 @@ import com.ohgiraffers.pos.menu.dto.MenuDTO;
 import com.ohgiraffers.pos.menu.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -21,13 +22,13 @@ public class MenuController {
     @GetMapping
     public ModelAndView selectAllMenu(ModelAndView mv) {
         List<MenuDTO> menus = menuService.selectAllMenu();
-
-        if (Objects.isNull(menus)) { // menuService에서의 작업 이후에 에러
-            System.out.println("exception으로 대체한다.");
-        }
+        // 에러 만들기
+        /*menus = null;
+        System.out.println(menus.size());*/
 
         mv.addObject("menus", menus);
         mv.setViewName("menu/allMenus");
+
         return mv;
     }
 }
